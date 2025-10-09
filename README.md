@@ -1,4 +1,6 @@
 # SR-FLIPFLOP-USING-CASE
+## Name: Nithish DM
+## Reg No: 212224235001
 
 **AIM:**
 
@@ -33,50 +35,31 @@ By using three variable K-Map, we can get the simplified expression for next sta
 The maximum possible groupings of adjacent ones are already shown in the figure. Therefore, the simplified expression for next state Qt+1t+1 is Q(t+1)=S+R′Q(t)Q(t+1)=S+R′Q(t)
 
 **Procedure**
-```
-Step 1: Open Quartus II in your laptop.
 
-Step 2: Write code to implement SR flipflop using verilog and validating their functionality using their functional tables.
+/*1.Type the program in Quartus software.
 
-Step 3: Run compilation to check for errors.
+2.Compile and run the program.
 
-Step 4: Open waveform output and load input values.
+3.Generate the RTL schematic and save the logic diagram.
 
-Step 5: Run simulation to get the output.
+4.Create nodes for inputs and outputs to generate the timing diagram.
 
-Step 6: Open in RTL viewers to get RTL diagram output.
-```
+5.For different input combinations generate the timing diagram.*/
 
 **PROGRAM**
-
 ```
-Developed by: Nithish D M
-RegisterNumber:212223230144
-module SRFLIPFLOPUSINGCASE(q, q_bar, s,r, clk, reset);//SR Flip Flop Behavioral Level using ‘case’ 
-  input s,r,clk, reset;
-  output reg q;
-  output q_bar;
- 
-  always@(posedge clk) begin // for synchronous reset
-    if(!reset)       q <= 0;
-    else 
-  begin
-      case({s,r})       
-	     2'b00: q <= q;    // No change
-        2'b01: q <= 1'b0; // Write logic for reset
-        2'b10: q <= 1'b1; // Write logic for set
-        2'b11: q <= 1'bx; // Write logic for Invalid state
-      endcase
-    end
-  end
-  assign q_bar = ~q;
+module ex06(input S,input R,input clk,output reg Q, output reg Qbar);
+always @(posedge clk)
+begin 
+Q <= S | (~R & Q);
+Qbar<=~Q;
+end
 endmodule
 ```
-
 **RTL LOGIC FOR FLIPFLOPS**
-![image](https://github.com/iniyasri4464/SR-FLIPFLOP-USING-CASE/assets/152419072/36643693-9534-408f-9f49-fcb4fe55764d)
-**TIMING DIGRAMS FOR FLIP FLOPS**
-![image](https://github.com/iniyasri4464/SR-FLIPFLOP-USING-CASE/assets/152419072/2035823c-4b88-43bd-be33-b4b7064b6c89)
-**RESULTS**
+<img width="1920" height="1200" alt="Screenshot 2025-10-07 134728" src="https://github.com/user-attachments/assets/e3cd17ae-4cf4-401d-8bab-186985b9898d" />
 
-The observation of the simulation results and confirm the successful execution of the program
+**TIMING DIGRAMS FOR FLIP FLOPS**
+<img width="1920" height="1200" alt="Screenshot 2025-10-07 135529" src="https://github.com/user-attachments/assets/b521ea4d-9423-41c5-bf92-f9def93903ce" />
+
+**RESULTS**
